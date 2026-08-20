@@ -19,9 +19,17 @@ const userSchema = new mongoose.Schema({
      type: String,
     required: true
   },
-  token: {
+  jwtToken: {
     type: String,
-  }
+  },
+  refreshToken:{
+    type: String,
+  },
+      jwtTokenExpiresAt: {
+      type: Date,
+      index: true,
+      expires: 0,
+    },
 }, { timestamps: true } );
 
 const User = mongoose.model('User', userSchema);

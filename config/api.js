@@ -1,4 +1,4 @@
-module.exports.API = {
+export const API = {
 	root: 'https://apiconnect.angelone.in',
 	login: 'https://smartapi.angelone.in/publisher-login',
 	debug: false,

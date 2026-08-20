@@ -1,14 +1,26 @@
 import express from "express";
 import cors from "cors";
+import router  from "./routes/index.js"
+import mongoose from "mongoose";
+import dotenv from "dotenv"
 
 const app = express();
 app.use(cors());
 app.use(express.json());
+dotenv.config();
+
+mongoose.connect(process.env.MONGO_URI).then(()=>{
+console.log("DB connected success ")
+}).catch((err)=>{
+  console.log("Errr in DB connection", err)
+})
 
 
 app.get("/", (req, res) => {
   res.send("Hello World!");
 });
+
+app.use("/api",router);
 
 const PORT = process.env.PORT || 3000;
 
