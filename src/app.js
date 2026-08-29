@@ -3,6 +3,7 @@ import cors from "cors";
 import router  from "./routes/index.js"
 import mongoose from "mongoose";
 import dotenv from "dotenv"
+import { scheduleCandleRefreshJob } from "./jobs/refreshCandles.job.js";
 
 const app = express();
 app.use(cors());
@@ -11,6 +12,7 @@ dotenv.config();
 
 mongoose.connect(process.env.MONGO_URI).then(()=>{
 console.log("DB connected success ")
+scheduleCandleRefreshJob();
 }).catch((err)=>{
   console.log("Errr in DB connection", err)
 })

@@ -2,6 +2,11 @@ import express from 'express';
 import mongoose from 'mongoose';
 
 const userSchema = new mongoose.Schema({
+  role:{
+    type: String,
+    enum: ["user","admin"],
+    default: "user"
+  },
   clientcode: {
     type: String,
     required: true,
@@ -25,7 +30,7 @@ const userSchema = new mongoose.Schema({
   refreshToken:{
     type: String,
   },
-      jwtTokenExpiresAt: {
+  jwtTokenExpiresAt: {
       type: Date,
       index: true,
       expires: 0,

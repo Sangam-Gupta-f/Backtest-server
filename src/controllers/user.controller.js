@@ -206,4 +206,4 @@ const getProfile = async (req, res) => {
   }
 };
 
-export { loginuser, generateToken, logout, getProfile };
+export { loginuser, generateToken, logout, getProfile, getBearerToken };
