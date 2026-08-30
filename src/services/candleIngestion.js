@@ -60,6 +60,7 @@ export const ingestCandleRange = async ({ exchange, symboltoken, interval, fromD
   }
 
   const chunks = buildDateChunks(fromDate, toDate, interval);
+  console.log("this is chunks ", chunks);
   let stored = 0;
   const errors = [];
 
@@ -69,7 +70,6 @@ export const ingestCandleRange = async ({ exchange, symboltoken, interval, fromD
 
     try {
       const angelData = await fetchCandleChunk(exchange, symboltoken, interval, from, to, key, jwtToken);
-
       if (!angelData?.status) {
         errors.push({ from, to, message: angelData?.message || 'Chunk fetch failed' });
         continue;
